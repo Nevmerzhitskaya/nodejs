@@ -2,7 +2,7 @@ import * as fsPromises from 'node:fs/promises';
 
 const create = async () => {
     const path = './src/fs/files/fresh.txt';
-    fsPromises.stat(path)
+    fsPromises.access(path)
         .then(() => {
             console.error(new Error('FS operation failed'))
         })
