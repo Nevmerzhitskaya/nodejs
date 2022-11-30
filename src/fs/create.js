@@ -2,11 +2,11 @@ import * as fsPromises from 'node:fs/promises';
 
 const create = async () => {
     const path = './src/fs/files/fresh.txt';
-    
+    const error = new Error('FS operation failed');
+
     try {
         await fsPromises.access(path);
-        const error = new Error('FS operation failed');
-        console.error(error);
+        console.error(error.name + ':', error.message);
         throw error;
 
     } catch (err) {
