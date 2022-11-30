@@ -8,15 +8,15 @@ const copy = async () => {
 
 
     try {
-        const dirCopy = await checkDir(pathCopy);
-        if (!dirCopy.error) throw error;
+        const isExistCopy = await checkDir(pathCopy);
+        if (!isExistCopy.error) throw error;
 
-        const dirSource = await checkDir(pathSource);
-        if (dirSource.error) throw error;
+        const isExistSource = await checkDir(pathSource);
+        if (isExistSource.error) throw error;
 
         await fsPromises.mkdir(pathCopy);
 
-        for await (const dirent of dirSource.dir) {
+        for await (const dirent of isExistSource.dir) {
             await fsPromises.copyFile(pathSource + dirent.name, pathCopy + dirent.name);
         }
 
