@@ -25,7 +25,7 @@ await rename();
 
 async function checkFile(path) {
     try {
-        await fsPromises.access(path);
+        await fsPromises.open(path, 'r');
 
         return true;
     } catch (err) {
