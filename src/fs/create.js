@@ -5,9 +5,12 @@ const create = async () => {
     const error = new Error('FS operation failed');
 
     try {
-        await fsPromises.access(path);
-        console.error(error.name + ':', error.message);
-        throw error;
+        const buff = await fsPromises.open(path, 'r');
+        
+        if(buff) {
+            console.error(error.name + ':', error.message);
+            throw error;
+        }
 
     } catch (err) {
         if(err.code === 'ENOENT') await fsPromises.appendFile(path, 'I am fresh and young');
