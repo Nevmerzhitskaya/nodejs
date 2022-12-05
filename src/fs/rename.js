@@ -1,14 +1,16 @@
 import * as fsPromises from 'node:fs/promises';
+import { filePathConverter } from '../filePathConverter.js';
 
 const rename = async () => {
-    const path = './src/fs/files/';
-    const oldFile = path + 'wrongFilename.txt';
-    const newFile = path + 'properFilename.md';
+    const oldFile = filePathConverter('fs','files','wrongFilename.txt');
+    const newFile = filePathConverter('fs','files','properFilename.md');
+
     const error = new Error('FS operation failed');
     
     try {
 
         const isExistSourceFile = await checkFile(oldFile);
+        // console.log(isExistSourceFile);
         if(!isExistSourceFile) throw error;
 
         const isExistResultFile = await checkFile(newFile);
