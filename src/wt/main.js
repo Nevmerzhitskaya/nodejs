@@ -33,8 +33,6 @@ await performCalculations();
 
 function addWorker(j) {
     return new Promise((resolve, reject) => {
-        let data = {};
-
         const worker = new Worker('./src/wt/worker.js', { workerData: j });
 
         worker.on('message', (msg) => {
