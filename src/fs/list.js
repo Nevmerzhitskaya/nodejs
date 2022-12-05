@@ -1,9 +1,10 @@
 import * as fsPromises from 'node:fs/promises';
+import { filePathConverter } from '../filePathConverter.js';
 
 const list = async () => {
 
-    const pathSource = './src/fs/files/';
     const error = new Error('FS operation failed');
+    const pathSource = filePathConverter('fs','files');
 
     try {
         const isExistSource = await checkDir(pathSource);
