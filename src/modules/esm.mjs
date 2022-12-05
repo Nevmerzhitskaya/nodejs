@@ -1,7 +1,6 @@
-import * as path from 'path';
 import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import "./files/c.js";
