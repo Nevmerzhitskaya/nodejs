@@ -1,9 +1,10 @@
 import * as fsPromises from 'node:fs/promises';
+import { filePathConverter } from '../filePathConverter.js';
 
 const copy = async () => {
 
-    const pathSource = './src/fs/files/';
-    const pathCopy = './src/fs/files_copy/';
+    const pathSource = filePathConverter('fs','files');    
+    const pathCopy = filePathConverter('fs','files_copy');    
     const error = new Error('FS operation failed');
 
 
