@@ -1,5 +1,6 @@
 import * as fsPromises from 'node:fs/promises';
 import { filePathConverter } from '../filePathConverter.js';
+import path from 'path';
 
 const copy = async () => {
 
@@ -14,11 +15,12 @@ const copy = async () => {
 
         const isExistSource = await checkDir(pathSource);
         if (isExistSource.error) throw error;
+        
 
         await fsPromises.mkdir(pathCopy);
 
         for await (const dirent of isExistSource.dir) {
-            await fsPromises.copyFile(pathSource + dirent.name, pathCopy + dirent.name);
+            await fsPromises.copyFile(path.resolve(pathSource, dirent.name), path.resolve(pathCopy, dirent.name));
         }
 
     } catch (err) {
